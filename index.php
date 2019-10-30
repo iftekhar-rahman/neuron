@@ -2,45 +2,38 @@
 
 		<!-- ::::::::::::::::::::: start slider section:::::::::::::::::::::::::: -->
 		<section class="slider-area">
-		
-			<!-- slide item one -->
-			<div class="homepage-slider slider-bg1">
-				<div class="display-table">
-					<div class="display-table-cell">
-						<div class="container">
-							<div class="row">
-								<div class="col-sm-7">
-									<div class="slider-content">
-										<h1>Prepare for the future with our advisors</h1>
-										<p>Interactively simplify 24/7 markets through 24/7 best practices. Authoritatively foster cutting-edge manufactured products and distinctive.</p>
-										<a href="#">Meet Experts <i class="fa fa-long-arrow-right"></i></a>
-									</div>
+
+		<?php
+		global $post;
+		$args = array( 'posts_per_page' => 5, 'post_type'=> 'slide', 'orderby' => 'menu_order', 'order' => 'ASC' );
+		$myposts = get_posts( $args );
+		foreach( $myposts as $post ) : setup_postdata($post); ?>
+
+		<?php 
+		$btn_text= get_post_meta($post->ID, 'btn_text', true); 
+		$btn_link= get_post_meta($post->ID, 'btn_link', true); 
+		?>
+
+		<!-- slide item one -->
+		<div style="background-image: url(<?php the_post_thumbnail_url(); ?>);"  class="homepage-slider">
+			<div class="display-table">
+				<div class="display-table-cell">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-7">
+								<div class="slider-content">
+									<h1><?php the_title(); ?></h1>
+									<?php the_content(); ?>
+									<a href="<?php echo $btn_link; ?>"><?php echo $btn_text; ?> <i class="fa fa-long-arrow-right"></i></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<!-- slide item three -->
-			<div class="homepage-slider slider-bg3">
-				<div class="display-table">
-					<div class="display-table-cell">
-						<div class="container">
-							<div class="row">
-								<div class="col-sm-7">
-									<div class="slider-content">
-										<h1>Prepare for the future with our advisors</h1>
-										<p>Interactively simplify 24/7 markets through 24/7 best practices. Authoritatively foster cutting-edge manufactured products and distinctive.</p>
-										<a href="#">Meet Experts <i class="fa fa-long-arrow-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
+		</div>
+		<?php endforeach; wp_reset_query(); ?>
+
 		</section><!-- slider area end -->
 	
 	
@@ -58,36 +51,25 @@
 					</div>
 				</div>
 				<div class="row">
+
+					<?php
+					global $post;
+					$args = array( 'posts_per_page' => 3, 'post_type'=> 'feature', 'orderby' => 'menu_order', 'order' => 'ASC' );
+					$myposts = get_posts( $args );
+					foreach( $myposts as $post ) : setup_postdata($post); ?>
 					<!-- single intro -->
 					<div class="col-md-4">
 						<div class="single-intro">
-							<div class="intro-img intro-bg1"></div>
+							<div style="background-image: url(<?php the_post_thumbnail_url(); ?>);" class="intro-img"></div>
 							<div class="intro-details text-center">
-								<h3>About Business</h3>
-								<p>Seamlessly envisioneer extensive interfaces and back wardcompatible applications. Proactively promote timely best.</p>
+								<h3><?php the_title(); ?></h3>
+								<?php the_content(); ?>
 							</div>
 						</div>
 					</div>
 					<!-- single intro -->
-					<div class="col-md-4">
-						<div class="single-intro">
-							<div class="intro-img intro-bg2"></div>
-							<div class="intro-details text-center">
-								<h3>Business Growth</h3>
-								<p>Seamlessly envisioneer extensive interfaces and back wardcompatible applications. Proactively promote timely best.</p>
-							</div>
-						</div>
-					</div>
-					<!-- single intro -->
-					<div class="col-md-4">
-						<div class="single-intro">
-							<div class="intro-img intro-bg3"></div>
-							<div class="intro-details text-center">
-								<h3>Sustainability</h3>
-								<p>Seamlessly envisioneer extensive interfaces and back wardcompatible applications. Proactively promote timely best.</p>
-							</div>
-						</div>
-					</div>
+					<?php endforeach; wp_reset_query(); ?>
+
 				</div>
 			</div>
 		</section><!-- intro area end -->
@@ -128,54 +110,28 @@
 				</div>
 				
 				<div class="row">
+					<?php
+					global $post;
+					$args = array( 'posts_per_page' => 6, 'post_type'=> 'service', 'orderby' => 'menu_order', 'order' => 'ASC' );
+					$myposts = get_posts( $args );
+					foreach( $myposts as $post ) : setup_postdata($post); ?>
+
+					<?php 
+						$link= get_post_meta($post->ID, 'link', true); 
+					?>
+
 					<!-- single service -->
 					<div class="col-sm-6 col-md-4">
 						<div class="services-tiem">
-							<img class="hvr-buzz-out" src="<?php echo get_template_directory_uri(); ?>/assets/img/services/1.png" alt="" />
-							<h3><a href="#">Performance</a></h3>
-							<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
+							<?php the_post_thumbnail('thumbnail', array('class', 'hvr-buzz-out')); ?>
+							<h3><a href="#"><?php the_title(); ?></a></h3>
+							<?php the_content(); ?>
 						</div>
 					</div>
 					<!-- single service -->
-					<div class="col-sm-6 col-md-4">
-						<div class="services-tiem">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/2.png" alt="" />
-							<h3><a href="#">Sustainability</a></h3>
-							<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-						</div>
-					</div>
-					<!-- single service -->
-					<div class="col-sm-6 col-md-4">
-						<div class="services-tiem">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/3.png" alt="" />
-							<h3><a href="#">Web Design</a></h3>
-							<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-						</div>
-					</div>
-					<!-- single service -->
-					<div class="col-sm-6 col-md-4">
-						<div class="services-tiem">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/4.png" alt="" />
-							<h3><a href="#">Web Development</a></h3>
-							<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-						</div>
-					</div>
-					<!-- single service -->
-					<div class="col-sm-6 col-md-4">
-						<div class="services-tiem">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/5.png" alt="" />
-							<h3><a href="#">Branding Design</a></h3>
-							<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-						</div>
-					</div>
-					<!-- single service -->
-					<div class="col-sm-6 col-md-4">
-						<div class="services-tiem">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/6.png" alt="" />
-							<h3><a href="#">Marketing </a></h3>
-							<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-						</div>
-					</div>
+					<?php endforeach; wp_reset_query(); ?>
+					
+					
 				</div>
 			</div>
 		</section><!-- end services section -->

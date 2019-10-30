@@ -46,7 +46,7 @@ function neuron_assets(){
     wp_enqueue_style( "owlcarousel-css", get_theme_file_uri( "/assets/css/owl.carousel.min.css" ), null, "1.0" );
     wp_enqueue_style( "bootsnav-css", get_theme_file_uri( "/assets/css/bootsnav.css" ), null, "1.0" );
     wp_enqueue_style( "bootstrap-css", get_theme_file_uri( "/assets/css/bootstrap.min.css" ), null, "1.0" );
-    wp_enqueue_style( "neuron-css", get_stylesheet_uri(), null, VERSION );
+    wp_enqueue_style( "neuron-css", get_stylesheet_uri() );
 
     wp_enqueue_script( "bootstrap-js", get_theme_file_uri( "/assets/js/bootstrap.min.js" ), array( "jquery" ), "1.0", true );
     wp_enqueue_script( "bootsnav-js", get_theme_file_uri( "/assets/js/bootsnav.js" ), array( "jquery" ), "1.0", true );
@@ -60,3 +60,65 @@ function neuron_assets(){
     wp_enqueue_script( "main-js", get_theme_file_uri( "/assets/js/script.js" ), array( "jquery" ), "1.0", true );
 }
 add_action( "wp_enqueue_scripts", "neuron_assets" );
+
+// Custom posts
+function neuron_custom_post() {
+    register_post_type( 'slide',
+    array(
+        'labels' => array(
+            'name' => __( 'Slides' ),
+            'singular_name' => __( 'Slide' )
+        ),
+        'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
+        'public' => true
+        )
+    );
+
+    register_post_type( 'feature',
+    array(
+        'labels' => array(
+            'name' => __( 'Features' ),
+            'singular_name' => __( 'Feature' )
+        ),
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+        'public' => true
+        )
+    );
+
+    register_post_type( 'service',
+    array(
+        'labels' => array(
+            'name' => __( 'Services' ),
+            'singular_name' => __( 'Service' )
+        ),
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'page-attributes'),
+        'public' => true
+        )
+    );
+}
+add_action( 'init', 'neuron_custom_post' );
+
+
+function neuton_widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer one', 'neuron' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Add footer one widgets here.', 'neuron' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+    ) );
+    
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer two', 'neuron' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Add footer one widgets here.', 'neuron' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'neuton_widgets_init' );
+

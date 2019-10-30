@@ -667,6 +667,9 @@ ul.cart-list>li.total>a.btn:hover {
 .services-tiem a:hover{
 	color: #3452FF;
 }
+.services-tiem img {
+    max-width: 62px;
+}
 
 /* ================= Client logo area ======================*/
 .client-logo{
