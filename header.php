@@ -12,7 +12,7 @@
 	</head>
 
 
-	<body>
+	<body <?php body_class(); ?>>
 	
 		<!-- ::::::::::::::::::::: Header Section:::::::::::::::::::::::::: -->
 		<header>
