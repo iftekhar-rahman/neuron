@@ -1,4 +1,4 @@
-		<?php if(!is_page(12)) : ?>
+		<?php if(!is_page(array('12', '14'))) : ?>
 		<!-- :::::::::::::::::::::  Client Section:::::::::::::::::::::::::: -->
 		<section class="client-logo darker-bg">
 			<div class="container">

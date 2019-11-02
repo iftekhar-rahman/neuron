@@ -1,5 +1,9 @@
 <?php
 
+// Includeing CS Frameworks
+require_once get_template_directory() . "/inc/cs-framework/cs-framework.php" ;
+
+
 function philosophy_theme_setup() {
 
     // Loading theme textdomain
@@ -92,6 +96,17 @@ function neuron_custom_post() {
             'singular_name' => __( 'Service' )
         ),
         'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'page-attributes'),
+        'public' => true
+        )
+    );
+
+    register_post_type( 'work',
+    array(
+        'labels' => array(
+            'name' => __( 'Works' ),
+            'singular_name' => __( 'Work' )
+        ),
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
         'public' => true
         )
     );
