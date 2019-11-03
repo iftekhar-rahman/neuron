@@ -1,65 +1,71 @@
-		<?php get_header(); ?>
+<?php get_header(); ?>
 
-		<!-- ::::::::::::::::::::: start slider section:::::::::::::::::::::::::: -->
-		<section class="slider-area">
+    <section class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- breadcrumb content -->
+                    <div class="page-breadcrumbd">
+                        <h2>Press &amp; News</h2>
+                        <p><a href="<?php echo site_url(); ?>">Home</a> / Blog</p>
+                    </div><!-- end breadcrumb content -->
+                </div>
+            </div>
+        </div>
+    </section><!-- end breadcrumb -->
 
-		<?php
-		global $post;
-		$args = array( 'posts_per_page' => 5, 'post_type'=> 'slide', 'orderby' => 'menu_order', 'order' => 'ASC' );
-		$myposts = get_posts( $args );
-		foreach( $myposts as $post ) : setup_postdata($post); ?>
+    <section class="blog section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                    <!-- blog title -->
+                    <div class="template-title text-center">
+                        <h2>News Blog</h2>
+                        <p>Holisticly transform excellent systems rather than collaborative leadership. Credibly pursue compelling outside the box.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
 
-		<?php 
-		$btn_text= get_post_meta($post->ID, 'btn_text', true); 
-		$btn_link= get_post_meta($post->ID, 'btn_link', true); 
-		?>
+            <?php
+                if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                <!-- single blog item -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="blog-item">
+                        <!-- blog thumbnail -->
+                        <div class="blog-thumb">
+                            <?php the_post_thumbnail('neuron-blog-thumb'); ?>
+                        </div>
+                        <div class="blog-content">
+                            <!-- blog title -->
+                            <header class="blog-header">
+                                <div class="tag">
+                                    <?php neuron_entry_footer(); ?>
+                                </div>
+                                <div class="blog-title">
+                                    <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                </div>
+                            </header>
+                            
+                            <!-- blog content -->
+                            <div class="entry-content">
+                                <?php the_excerpt(); ?>
+                                <a href="<?php the_permalink(); ?>"><?php _e('Read More', 'neuron'); ?></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endwhile; else : ?>
 
-		<!-- slide item one -->
-		<div style="background-image: url(<?php the_post_thumbnail_url(); ?>);"  class="homepage-slider">
-			<div class="display-table">
-				<div class="display-table-cell">
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-7">
-								<div class="slider-content">
-									<h1><?php the_title(); ?></h1>
-									<?php the_content(); ?>
-									<a href="<?php echo $btn_link; ?>"><?php echo $btn_text; ?> <i class="fa fa-long-arrow-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php endforeach; wp_reset_query(); ?>
+                <div class="col">
+                    <h2 class="text-center">No Posts Found</h2>
+                </div>
 
-		</section><!-- slider area end -->
-	
-		<?php get_template_part('content/promo'); ?>
-	
-		<!-- ::::::::::::::::::::: start block content area:::::::::::::::::::::::::: -->
-		<section class="section-padding">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="block-text">
-							<h2>A Finance Agency Crafting Beautiful & Engaging Online Experiences</h2>
-							<p>Seamlessly communicate distinctive alignments and business models. Efficiently whiteboard robust meta-services whereas stand-alone synergy. Enthusiastically engage premier supply chains after intuitive testing procedures. Conveniently parallel task robust imperatives through corporate customer service.</p> 
-							
-							<p>Dynamically productivate tactical mindshare via business collaboration and idea-sharing. Credibly conceptualize extensive schemas for functionalized metrics. </p>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="block-img">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/homepageblock.jpg" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!-- block area end -->
-	
-	
-		<?php get_template_part('content/services'); ?>
-	
-		<?php get_footer(); ?>
+                <?php endif; ?>          
+
+            </div>
+        </div>
+    </section>
+
+<?php get_footer(); ?>
