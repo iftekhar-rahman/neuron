@@ -135,7 +135,7 @@ h6{
 	line-height: 20px;
 }
 
-.btn {
+.btn, .comment-form input[type=submit] {
 	color: #fff;
 	padding: 14px 30px;
 	text-transform: uppercase;
@@ -144,10 +144,10 @@ h6{
 	border-radius: 3px;
 	box-shadow: 0 4px 5px rgba(34, 34, 34, 0.2);
 }
-.btn:hover {
+.btn:hover, .comment-form input[type=submit]:hover {
     box-shadow: 0 8px 10px rgba(34, 34, 34, 0.2);
 }
-.btn-primary {
+.btn-primary, .comment-form input[type=submit] {
 	background-color: #3452ff;
 }
 .btn-primary,
@@ -155,13 +155,19 @@ h6{
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:active:focus, 
-.btn-primary:active:hover {
+.btn-primary:active:hover,
+ .comment-form input[type=submit] {
     background-color: #3452ff;
     border-color: #3452ff;
 }
+.comment-form input[type=submit] {
+    width: auto;
+    text-align: right;
+    margin-top: 30px;
+    float: right;
+}
 
-
-.btn-sm {
+.btn-sm  {
     padding: 8px 20px;
     font-size: 12px;
     font-weight: 400;
@@ -1024,6 +1030,42 @@ ul.cart-list>li.total>a.btn:hover {
 	color: #61727f;
 }
 
+
+.comments-area label {
+    display: none;
+}
+
+comments-area input {}
+
+.comment-form input, .comment-form textarea {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    padding: 10px 15px;
+    transition: all .5s ease;
+}
+
+.comment-form input:focus, .comment-form textarea:focus {
+    box-shadow: 0px 0px 5px #ddd;
+}
+
+.comment-form input[type=text], .comment-form input[type=email], .comment-form input[type=url] {
+    width: 32%;
+    float: left;
+    margin-right: 20px;
+}
+
+.comment-form input[type=url] {
+    margin-right: 0;
+}
+
+p.comment-form-cookies-consent {
+    display: none;
+}
+
+.comment-form inpu[type=submit] {}
+
+
 /* ================ testimonial section ================== */
 
 .testimonial{
@@ -1232,7 +1274,7 @@ a:focus{
 .post-wrapper .blog-content{
 	padding: 15px 20px 15px 40px;
 }
-.single-post-title h2 {
+.comment-reply-title {
 	font-size: 29px;
 	font-weight: bold;
 	padding-top: 20px;
@@ -1364,10 +1406,46 @@ li.rating ul i {
 	margin-top: 20px;
 }
 
-.comment-title h2{
+.comment-reply-title{
 	margin-bottom: 40px;
 }
 
+.comments-area ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.comments-area .says {
+    display: none;
+}
+
+.comment-author {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.comment-author a {
+    color: #000;
+}
+
+.comment-author img.avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.comment-body {
+    position: relative;
+    padding-left: 120px;
+    margin-bottom: 30px;
+}
+.comment-form {
+    padding-bottom: 165px;
+}
+.comments-area ol li li {
+    margin-left: 50px;
+}
 /* comments media 
 --------------------------*/
 
