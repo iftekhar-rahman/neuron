@@ -3,6 +3,8 @@
 		* Template Name: Homepage Template
 		*/ 
 
+		$enable_homage_promo = cs_get_option('enable_homage_promo');
+		$enable_homage_content = cs_get_option('enable_homage_content');
 		$home_content_title = cs_get_option('home_content_title');
 		$home_content_text = cs_get_option('home_content_text');
 		$home_content_image = cs_get_option('home_content_image');
@@ -52,8 +54,9 @@
 
 		</section><!-- slider area end -->
 	
-		<?php get_template_part('content/promo'); ?>
+		<?php if($enable_homage_promo == true) {get_template_part('content/promo');}   ?>
 	
+		<?php if($enable_homage_content == 1) : ?>
 		<!-- ::::::::::::::::::::: start block content area:::::::::::::::::::::::::: -->
 		<section class="section-padding">
 			<div class="container">
@@ -72,6 +75,7 @@
 				</div>
 			</div>
 		</section><!-- block area end -->
+		<?php endif; ?>
 	
 	
 		<?php get_template_part('content/services'); ?>

@@ -19,11 +19,19 @@ $options[]      = array(
   'fields'      => array(
     // promo area
     array(
+      'id'              => 'enable_homage_promo',
+      'type'            => 'switcher',
+      'title'           => 'Enable promo area?',
+      'default'         => true,
+      'desc'            => 'If you want to enable promo area select yes.',
+    ),
+    array(
       'id'              => 'promo_title',
       'type'            => 'text',
       'title'           => 'Promo area title',
       'default'         => 'Welcome to the Neuron Finance',
       'desc'            => 'Type promo area title',
+      'dependency'      => array( 'enable_homage_promo', '==', 'true' ),
     ),
     array(
       'id'              => 'promo_content',
@@ -31,26 +39,37 @@ $options[]      = array(
       'title'           => 'Promo area content',
       'default'         => 'Interactively simplify 24/7 markets through 24/7 best practices. Authoritatively foster cutting-edge manufactured products and distinctive.',
       'desc'            => 'Type promo area content',
+      'dependency'      => array( 'enable_homage_promo', '==', 'true' ),
     ),
     // homepage content
+    array(
+      'id'              => 'enable_homage_content',
+      'type'            => 'switcher',
+      'title'           => 'Enable homepage content area?',
+      'default'         => true,
+      'desc'            => 'If you want to enable homepage content select yes.',
+    ),
     array(
       'id'              => 'home_content_title',
       'type'            => 'text',
       'title'           => 'Homepage content title',
       'default'         => 'A Finance Agency Crafting Beautiful & Engaging Online Experiences',
       'desc'            => 'Type homepage content title',
+      'dependency'      => array( 'enable_homage_content', '==', 'true' ),
     ),
     array(
       'id'              => 'home_content_text',
       'type'            => 'textarea',
       'title'           => 'Homepage content text',
       'desc'            => 'Homepage content text area',
+      'dependency'      => array( 'enable_homage_content', '==', 'true' ),
     ),
     array(
       'id'              => 'home_content_image',
       'type'            => 'image',
       'title'           => 'Homepage content image',
       'desc'            => 'Homepage content image here',
+      'dependency'      => array( 'enable_homage_content', '==', 'true' ),
     ),
   ),
 );
