@@ -1,4 +1,4 @@
-		<?php if(!is_page(array('12', '14'))) : ?>
+		<?php if(!is_page(array('10', '12', '85'))) : ?>
 		<!-- :::::::::::::::::::::  Client Section:::::::::::::::::::::::::: -->
 		<section class="client-logo darker-bg">
 			<div class="container">
@@ -58,7 +58,7 @@
 							
 							<?php dynamic_sidebar('footer-4'); ?>
 
-							</div><!-- /.news-letter -->
+							
 						</div><!-- end single footer widget -->
 					</div><!-- /.row -->
 				</div><!-- /.container -->

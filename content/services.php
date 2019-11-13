@@ -1,11 +1,18 @@
+<?php 
+
+    $services_title = cs_get_option('service_title');
+    $service_content = cs_get_option('service_content');
+
+?>
+
 <!-- ::::::::::::::::::::: start services section:::::::::::::::::::::::::: -->
 <section class="section-padding <?php if(!is_page(12)) : ?> darker-bg <?php endif; ?>">
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
                 <div class="template-title text-center">
-                    <h2>We Provide Huge Range of Services</h2>
-                    <p>Holisticly transform excellent systems rather than collaborative leadership. Credibly pursue compelling outside the box.</p>
+                    <h2><?php echo $services_title; ?></h2>
+                    <?php echo wpautop($service_content); ?>
                 </div>
             </div>
         </div>

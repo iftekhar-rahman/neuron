@@ -109,7 +109,7 @@ function neuron_custom_post() {
             'name' => __( 'Works' ),
             'singular_name' => __( 'Work' )
         ),
-        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes', 'custom-fields'),
         'public' => true
         )
     );
