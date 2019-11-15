@@ -96,6 +96,64 @@ $options[]      = array(
   ),
 );
 
+
+$options[]      = array(
+  'name'        => 'about',
+  'title'       => 'Aboutpage Settings',
+  'icon'        => 'fa fa-home',
+  'fields'      => array(
+    // About page area
+    array(
+      'id'              => 'enable_about_content',
+      'type'            => 'switcher',
+      'title'           => 'Enable about page area?',
+      'default'         => true,
+      'desc'            => 'If you want to enable about page area select yes.',
+    ),
+    array(
+      'id'              => 'about_content_title',
+      'type'            => 'text',
+      'title'           => 'About area title',
+      'default'         => 'A Finance Agency Crafting Beautiful & Engaging Online Experiences',
+      'desc'            => 'Type about content area title',
+      'dependency'      => array( 'enable_about_content', '==', 'true' ),
+    ),
+    array(
+      'id'              => 'about_content_text',
+      'type'            => 'textarea',
+      'title'           => 'About area content text',
+      'desc'            => 'Type about content area text',
+      'dependency'      => array( 'enable_about_content', '==', 'true' ),
+    ),
+    array(
+      'id'              => 'about_content_image',
+      'type'            => 'image',
+      'title'           => 'About content image',
+      'desc'            => 'Type about content area image',
+      'dependency'      => array( 'enable_about_content', '==', 'true' ),
+    ),
+    array(
+      'id'              => 'faqs',
+      'type'            => 'group',
+      'title'           => 'FAQs',
+      'button_title'    => 'Add new',
+      'accordion_title'    => 'Add new FAQ',
+      'fields'           => array(
+        array(
+          'id'              => 'title',
+          'type'            => 'text',
+          'title'           => 'FAQ title',
+        ),
+        array(
+          'id'              => 'content',
+          'type'            => 'textarea',
+          'title'           => 'FAQ content',
+        ),
+      ),
+    ),
+  ),
+);
+
 $options[]   = array(
   'name'     => 'backup_section',
   'title'    => 'Backup',
@@ -111,8 +169,7 @@ $options[]   = array(
     array(
       'type'    => 'backup',
     ),
-
-  )
+  ),
 );
 
 CSFramework::instance( $settings, $options );

@@ -2,6 +2,20 @@
 /*
 * Template Name: About Template
 */ 
+
+$enable_aboutpage_promo = cs_get_option('enable_homage_promo');
+$enable_about_content = cs_get_option('enable_about_content');
+$about_content_title = cs_get_option('about_content_title');
+$about_content_text = cs_get_option('about_content_text');
+$about_content_image = cs_get_option('about_content_image');
+$about_content_image_array = wp_get_attachment_image_src(cs_get_option('about_content_image'), 'large');
+
+if( !empty($about_content_image) ){
+	$about_content_image = $about_content_image_array[0];
+}else{
+	$about_content_image = ''.get_template_directory_uri().'/assets/img/homepageblock.jpg';
+}
+
 get_header(); ?>
 
     <?php while ( have_posts() ) : the_post(); ?>
@@ -20,76 +34,69 @@ get_header(); ?>
         </div>
     </section><!-- end breadcrumb -->
 
+	<?php if($enable_about_content == true) : ?>
     <section class="block about-us-block section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <!-- block text -->
                     <div class="block-text">
-                        <?php the_content(); ?>
+                        <h2><?php echo $about_content_title; ?></h2>
+                        <?php echo wpautop($about_content_text); ?>
                     </div>
                 </div>
+				<div class="col-md-6">
+					<div class="block-img">
+						<img src="<?php echo $about_content_image; ?>" alt="" />
+					</div>
+				</div>
             </div>
         </div>
     </section>
+	<?php endif; ?>
 
     <?php get_template_part('content/promo'); ?>
 
     <section class="accordian-section section-padding">
 		<div class="container">
+
 			<div class="row">
 				<div class="col-md-6">
 					<div class="accorian-item">
 
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-							<!-- accordian item-1 -->
+
+							<?php 
+								$faq_no = 0; 
+								$faqs = cs_get_option('faqs'); 
+								foreach($faqs as $faq) :
+								$faq_no++; 
+
+								if($faq_no == 1){
+									$aria_expanded = 'true';
+									$in_class = 'in';
+								} else{
+									$aria_expanded = 'false';
+									$in_class = '';
+								}
+							?>
+							<!-- accordian item-<?php echo $faq_no; ?> -->
 							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
+								<div class="panel-heading" role="tab" id="heading-<?php echo $faq_no; ?>">
 									<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									Collaboratively utilize resource sucking sources before sticky.
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?php echo $faq_no; ?>" aria-expanded="<?php echo $aria_expanded; ?>" aria-controls="collapse-<?php echo $faq_no; ?>">
+									<?php echo $faq['title']; ?>
 									</a>
 									</h4>
 								</div>
-								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div id="collapse-<?php echo $faq_no; ?>" class="panel-collapse collapse <?php echo $in_class; ?>" role="tabpanel" aria-labelledby="heading-<?php echo $faq_no; ?>">
 									<div class="panel-body">
-										Distinctively productize progressive deliverables before diverse products. Conveniently underwhelm next-generation leadership for end-to-end mindshare. Holisticly communicate 2.0 niches and accurate methods of empowerment. Completely myocardinate collaborative technology.
+										<?php echo wpautop($faq['content']); ?>
 									</div>
 								</div>
 							</div>
-							
-							<!-- accordian item-2 -->
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingTwo">
-									<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									Proactively brand holistic applications before.
-									</a>
-									</h4>
-								</div>
-								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee
-									</div>
-								</div>
-							</div>
-							
-							<!-- accordian item-3 -->
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingThree">
-									<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-									Proactively brand holistic applications before.
-									</a>
-									</h4>
-								</div>
-								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">
-										Distinctively productize progressive deliverables before diverse products. Conveniently underwhelm next-generation leadership for end-to-end mindshare. Holisticly communicate 2.0 niches and accurate methods of empowerment. Completely myocardinate collaborative technology.
-									</div>
-								</div>
-							</div>
-						
+							<?php endforeach; ?>
+
 						</div>
 					</div>
 				</div>
