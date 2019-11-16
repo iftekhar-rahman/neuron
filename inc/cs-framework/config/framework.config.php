@@ -13,6 +13,20 @@ $options        = array();
 
 
 $options[]      = array(
+  'name'        => 'global',
+  'title'       => 'Global Options',
+  'icon'        => 'fa fa-cog',
+  'fields'      => array(
+    array(
+      'id'              => 'logos',
+      'type'            => 'gallery',
+      'title'           => 'Company logos',
+      'desc'            => 'Upload company logos here.',
+    ),
+  ),
+);
+
+$options[]      = array(
   'name'        => 'homepage',
   'title'       => 'Homepage Settings',
   'icon'        => 'fa fa-home',

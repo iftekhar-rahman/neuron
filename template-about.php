@@ -63,13 +63,17 @@ get_header(); ?>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="accorian-item">
-
+						
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
+						<pre><?php echo var_dump(cs_get_option('faqs')); ?></pre>
+						
 							<?php 
 								$faq_no = 0; 
 								$faqs = cs_get_option('faqs'); 
-								foreach($faqs as $faq) :
+								// if(!empty( $faqs))(
+									foreach($faqs as $faq) :
+								// );
+								
 								$faq_no++; 
 
 								if($faq_no == 1){

@@ -1,21 +1,25 @@
-		<?php if(!is_page(array('10', '12', '85'))) : ?>
-		<!-- :::::::::::::::::::::  Client Section:::::::::::::::::::::::::: -->
+		<?php 
+			$logos = cs_get_option('logos');
+			$logos_array = explode(',', $logos);
+			if(!is_page(array('10', '12', '85'))  && !empty($logos)) : 
+		?>
+
 		<section class="client-logo darker-bg">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="all-client-logo">
-							<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/cling-logo/1.jpg" alt="" /></a>
-							<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/cling-logo/2.jpg" alt="" /></a>
-							<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/cling-logo/3.jpg" alt="" /></a>
-							<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/cling-logo/4.jpg" alt="" /></a>
-							<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/cling-logo/5.jpg" alt="" /></a>
+							<?php foreach($logos_array as $logo) : $logo_array = wp_get_attachment_image_src($logo, 'medium'); ?>
+							<img src="<?php echo $logo_array[0]; ?>" alt="" />
+							<?php endforeach; ?>
 						</div>
 					</div><!-- /.col-md-12 -->
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</section><!-- end client section -->
 		<?php endif; ?>
+
+		<img src="<?php $img_array = wp_get_attachment_image_src(92, 'thumbnail');  echo $img_array[0]; ?>" alt="">
 		
 		<!-- ::::::::::::::::::::: Footer Section:::::::::::::::::::::::::: -->
 		<footer>
